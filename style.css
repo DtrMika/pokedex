@@ -77,19 +77,20 @@ body{
     }
     
  }
- #pokemons{
+ .card-container{
     display: flex;
     align-items: center;
     justify-content: center;
-    translate: 50px 150px;
-
+    flex-wrap: wrap;
+    gap: 20px;    /*espacio entre las cartas*/
+ }
+ .card-group{
+    flex-basis: calc(25%-20px);
  }
  .card {
-    position: fixed;
-    height: 370px;
-    margin-top: 100px;
-    width: 400px;
+    flex: 1;
     background-color: rgba(197, 197, 197, 0.5);
     border-radius: 14px;
     box-shadow: 3px 3px 3px 3px rgba(50, 50, 50, 0.5);
+    margin-bottom: 20px;
 }

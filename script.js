@@ -49,8 +49,8 @@ const container = document.getElementById("pokemons");
 function showData(dataArray) {
   container.innerHTML = "";
   for (const item of dataArray) {
-    container.innerHTML += `<div class="row card" style="width: 45%">
-      <img class="card-img-top" width="200" src="${item.image}" alt="Card image cap">
+    container.innerHTML += `<div class="row card" style="width: 25%">
+      <img class="card-img-top" width="250" src="${item.image}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">${item.name}</h5>
         <p class="card-text">${item.description}<br>Precio USD: ${item.cost}<br>Vendidos: ${item.soldCount}</p>
