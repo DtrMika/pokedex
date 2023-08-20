@@ -1,4 +1,79 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
+body{
+    font-family: 'Numans',Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    background-color: rgb(28, 43, 28);
+}
 .tit1{
     font-family: 'Numans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
+
+.div1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: aquamarine;
+}
+.div2{
+    display: block;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+
+.btnTxt{
+    font-family: 'Numans',Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 2ex;
+    padding: auto;
+    margin-left: 2ex;
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+
+}
+.btnB{
+    margin: 0;
+    font-family: 'Numans',Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 4ex;
+    background: black;
+    cursor: pointer;
+    border: none;
+    padding: 16px 32px;
+    color: aquamarine;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 12px;
+}
+
+ .btnB::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, red, yellow, orange,
+     green, pink,red,yellow,orange);
+     background-size: 800%;
+     border-radius: 10px;
+     filter: blur(8px);
+     animation:glowing 20s linear infinite;
+
+ }
+ @keyframes glowing {
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 400% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+    
+ }
