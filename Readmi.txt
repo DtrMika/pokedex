@@ -1,0 +1,7 @@
+Actividad pokedex
+https://pokeapi.co/api/v2/pokemon/ ----> Poke api con informacion de los pokemon
+Estudien ese JSON. 
+1) hacer el fetch correspondiente para realizar un "pokedex"
+2) Si ingreso el nombre de ese pokemon, quiero que me muestre alguna informacion, la que quieran.
+3) Sean libres con el tema diseño
+4) Tienen 45 minutos para realizarla, la idea es seguir practicando los conceptos que venimos manejando y que sumen trabajos a su portfolio.
