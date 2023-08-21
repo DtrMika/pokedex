@@ -1,61 +1,111 @@
-const div = document.getElementById("pokemons");
+const container = document.getElementById("pokemons");
 const storeValue = localStorage.getItem("catID");
 
-const PAGE_URL = "https://pokeapi.co/api/v2/pokemon/"; // creamos una constante para obtener la pagina
+const PAGE_URL = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0"; // creamos una constante para obtener la pagina
+// const Pokemon_URL = `https://pokeapi.co/api/v2/pokemon/${mew}`
 
-fetch(PAGE_URL)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Error en la red: " + response.status);
-    }
-    return response.json();
-  })
-  .then((data) => {
-    const results = data.results;
 
-    // Recorre la lista de resultados y obtiene más detalles de cada Pokémon
-    const promises = results.map((pokemon) => {
-      return fetch(pokemon.url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Error en la red: " + response.status);
-          }
-          return response.json();
-        })
-        .then((pokemonData) => {
-          return {
-            name: pokemonData.name,
-            image: pokemonData.sprites.front_default,
-            description: "Descripción de tu Pokémon", // Puedes personalizar esto
-          };
-        });
-    });
 
-    // Espera a que se completen todas las solicitudes antes de mostrar los datos
-    Promise.all(promises)
-      .then((dataArray) => {
-        showData(dataArray); // Llama a la función showData para mostrar los datos
-      })
-      .catch((error) => {
-        console.error("No se pudo obtener la página", error);
-      });
-  })
-  .catch((error) => {
-    console.error("No se pudo obtener la lista de Pokémon", error);
-  });
+async function getAll() {
 
-const container = document.getElementById("pokemons");
+  const response = await fetch(PAGE_URL);
 
-function showData(dataArray) {
-  container.innerHTML = "";
-  for (const item of dataArray) {
-    container.innerHTML += `<div class="row card" style="width: 25%">
-      <img class="card-img-top" width="250" src="${item.image}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">${item.name}</h5>
-        <p class="card-text">${item.description}<br>Precio USD: ${item.cost}<br>Vendidos: ${item.soldCount}</p>
-        <a href="#" class="btn btn-primary"></a>
-      </div>
-    </div>`;
-  }
+  if (!response.ok) throw new Error(`No se encontró el endpoint`);
+
+  const data = await response.json();
+
+  const { results } = data;
+
+  console.log(results)
+  pokemonData = results;
+
+  showData(results);
+
+
 }
+
+
+
+async function showData(dataArray) {
+
+  let template = "";
+
+  const localStoragePokemon = localStorage.getItem('pokemonName');
+
+  if (!localStoragePokemon) {
+    for (let item of dataArray) {
+      const response = await fetch(item.url);
+      const data = await response.json();
+
+      const { base_experience, id, sprites } = data;
+
+      template += `
+      <div class="col-12 col-sm-6 col-md-4 col-xl-2">
+        <div class="card" >
+        <div class="row">
+          <div class="col-6"><h6>${id}</h6></div>
+          <div class="col-6"><h6>Exp:${base_experience}</h6></div>
+        </div>
+          <img class="card-img-top" src="${sprites.front_default}" alt="Imagen de ${data.name}">
+          <div class="card-body">
+            <h6 class="text-center">${item.name}</h6>
+            <p class="card-text">descriptiondescriptiondescriptiondescriptiondescription</p>
+          </div>
+        </div>
+      </div>
+  `;
+    }
+
+    return container.innerHTML = template;
+
+  }
+
+  // Si hay algo en el localStorage, muestra esto
+  const pokemon_dinamic_URL = `https://pokeapi.co/api/v2/pokemon/${localStoragePokemon}/`
+
+  const response = await fetch(pokemon_dinamic_URL);
+  if (!response.ok) return alert('pokemon no válido')
+  const data = await response.json();
+
+  const { base_experience, id, sprites } = data;
+  console.log(data)
+
+  template += `
+    <div class="col-12">
+      <div class="card" >
+      <div class="row">
+        <div class="col-6"><h6>${id}</h6></div>
+        <div class="col-6"><h6>Exp:${base_experience}</h6></div>
+      </div>
+        <img class="card-img-top" src="${sprites.front_default}" alt="Imagen de ${data.name}">
+        <div class="card-body">
+          <h6 class="text-center">${data.name}</h6>
+          <p class="card-text">descriptiondescriptiondescriptiondescriptiondescription</p>
+        </div>
+      </div>
+    </div>
+`;
+
+  return container.innerHTML = template;
+
+}
+
+const inputText = document.querySelector('#txtbtn');
+const btn = document.querySelector('#btn-search');
+
+console.log(inputText)
+console.log(btn)
+
+function getPokemonName() {
+  btn.addEventListener('click', () => {
+    let inputValue = inputText.value.toLowerCase();
+    if (!inputValue) return alert('pone datos')
+    localStorage.setItem('pokemonName', inputValue)
+    location.reload();
+  })
+}
+
+
+
+document.addEventListener('DOMContentLoaded', getAll);
+document.addEventListener('DOMContentLoaded', getPokemonName);
