@@ -6,26 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>Tu Pokedex</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
 <body>
     <div>
         <div class="div1">
             <h1 class="tit1">Tu Pokedex</h1>
-
         </div>
+
+
         <div class="div2">
-            <label for="comntario" class="label">Pon el nombre de tu Pokemon </label><br>
+            <label for="txtbtn" class="label">Pon el nombre de tu Pokemon </label>
+            <br>
             <input class="btnTxt" type="text" name="ingresa tu Pokemon" id="txtbtn"
-                placeholder="el nombre de tu pokemon"><br>
-            <button class="btnB" type="button" value="BUSCAR">BUSCAR</button>
+                placeholder="el nombre de tu pokemon">
+            <br>
+            <button id="btn-search" class="btnB" type="submit" value="BUSCAR">BUSCAR</button>
         </div>
     </div>
     <main class="pb-5 container">
-        <div id="pokemons" class="card-container">
-
-        </div>
+        <div id="pokemons" class="card-container row"></div>
     </main>
+
+
+
+
     <script src="script.js"></script>
 </body>
 

@@ -1,31 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
-body{
-    font-family: 'Numans',Verdana, Geneva, Tahoma, sans-serif;
+
+body {
+    font-family: 'Numans', Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     background-color: rgb(123, 140, 123);
 }
-.tit1{
+
+.tit1 {
     font-family: 'Numans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
 
-.div1{
+/* 
+.div1 {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: black;
     color: aquamarine;
 }
-.div2{
+
+.div2 {
     display: block;
     text-align: center;
     justify-content: center;
     margin-top: 20px;
-    
+
 }
 
-.btnTxt{
-    font-family: 'Numans',Verdana, Geneva, Tahoma, sans-serif;
+.btnTxt {
+    font-family: 'Numans', Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 2ex;
     padding: auto;
     margin-left: 2ex;
@@ -34,9 +38,10 @@ body{
     font-size: 16px;
 
 }
-.btnB{
+
+.btnB {
     margin: 0;
-    font-family: 'Numans',Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Numans', Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 4ex;
     background: rgb(6, 6, 6);
     cursor: pointer;
@@ -49,7 +54,7 @@ body{
     border-radius: 12px;
 }
 
- .btnB::before{
+.btnB::before {
     content: "";
     position: absolute;
     top: 0;
@@ -58,39 +63,48 @@ body{
     width: 100%;
     height: 100%;
     background: linear-gradient(45deg, red, yellow, orange,
-     green, pink,red,yellow,orange);
-     background-size: 800%;
-     border-radius: 10px;
-     filter: blur(8px);
-     animation:glowing 20s linear infinite;
+            green, pink, red, yellow, orange);
+    background-size: 800%;
+    border-radius: 10px;
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
 
- }
- @keyframes glowing {
-    0%{
+}
+
+@keyframes glowing {
+    0% {
         background-position: 0 0;
     }
-    50%{
+
+    50% {
         background-position: 400% 0;
     }
-    100%{
+
+    100% {
         background-position: 0 0;
     }
-    
- }
- .card-container{
+
+}
+
+.card-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;    /*espacio entre las cartas*/
- }
- .card-group{
+    gap: 20px;
+    /*espacio entre las cartas*/
+}
+
+.card-group {
     flex-basis: calc(25%-20px);
- }
- .card {
+}
+
+.card {
     flex: 1;
     background-color: rgba(197, 197, 197, 0.5);
     border-radius: 14px;
     box-shadow: 3px 3px 3px 3px rgba(50, 50, 50, 0.5);
     margin-bottom: 20px;
 }
+
+*/
